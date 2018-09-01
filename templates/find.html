@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Find</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+
+<ul>
+    <li style="margin-left:160px"><a href="/community">Community</a></li>
+    <li><a class="active" href="/find">Find</a></li>
+    <li><a href="/follow">Follow</a></li>
+    <li><a href="/setting">Setting</a></li>
+    <li style="float:right;background-color:#606060"><a href="/logout">LogOut</a></li>
+</ul>
+
+<div style="padding:20px;margin-top:30px;margin-left:160px">
+<h1>Find other users.</h1>
+
+{% if message %}
+<p style="color:red">{{message}}</p>
+{% endif %}
+
+<table style="width: 600px;">
+{% for i in users %}
+<tr style="height: 140px;">
+    <form action="/find" method="post">
+        
+        <td style="vertical-align:bottom;">
+            <input type="hidden" name="user_id" value="{{i[0]}}">
+            <label style="font-size:24px;margin-bottom: 5px;">{{i[1]}}</label><br>
+            <label style="font-size:24px;margin-bottom: 5px;">{{i[2]}}</label><br>
+            <label style="font-size:24px;margin-bottom: 5px;">{{i[3]}}</label>
+        </td>
+        <td style="vertical-align:bottom;">
+            <button type="submit" style="width:100px;margin:2px;background-color:#4CAF50;border:none;border-radius:4px;color:white;font-size:18px;padding-top:7px;padding-bottom:7px;">Follow</button>
+        </td>
+    
+    </form>
+</tr>
+{% endfor %}
+</table>
+
+</div>  
+
+</body>
+</html>
